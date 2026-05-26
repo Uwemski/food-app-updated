@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+
+    /* COLORS */
+    --color-flame: #E8440A;
+    --color-ember: #C73209;
+    --color-tomato: #D94F2B;
+    --color-amber: #F59E0B;
+    --color-gold: #F2C94C;
+    --color-cream: #FDF8F3;
+    --color-warmwhite: #FFFAF5;
+    --color-charcoal: #1C1611;
+    --color-brown: #3D2B1F;
+    --color-muted: #6B5147;
+    --color-soft: #C8A99A;
+
+    /* FONTS */
+    --font-display: "Playfair Display", serif;
+    --font-body: "DM Sans", sans-serif;
+
+    /* SHADOWS */
+    --shadow-card: 0 2px 12px rgba(28,22,17,0.07);
+    --shadow-card-hover: 0 20px 60px rgba(28,22,17,0.18);
+    --shadow-btn: 0 4px 14px rgba(232,68,10,0.35);
+    --shadow-btn-hover: 0 6px 24px rgba(232,68,10,0.5);
+}
+
+/* Sources */
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
