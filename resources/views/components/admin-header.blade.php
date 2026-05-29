@@ -17,9 +17,9 @@
                         🔔
                     </button>
 
-                    <button class="px-5 py-3 rounded-2xl bg-gradient-to-r from-flame to-ember text-white font-semibold shadow-btn hover:shadow-btn-hover transition-all duration-200">
+                    <a href="{{ route('product.create') }}" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-flame to-ember text-white font-semibold shadow-btn hover:shadow-btn-hover transition-all duration-200">
                         + Add Product
-                    </button>
+                    </a>
 
                 </div>
             </div>
