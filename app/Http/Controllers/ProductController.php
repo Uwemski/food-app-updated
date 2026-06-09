@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\CreateProductRequest;
 use Illuminate\Support\Str;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProductController extends Controller
 {
@@ -39,13 +40,19 @@ class ProductController extends Controller
         //dd($data);
         $imagePath = null;
 
-        //try catch
+        // dd($data);
+        // try catch
         try{
             if($request->hasFile('image')) {
-                $path = $request->file('image')->store('uploads', 'products');
-                $data['image'] = $path;
-            }
-
+                    $cloudinary = new \Cloudinary\Cloudinary(env('CLOUDINARY_URL'));
+                    $result = $cloudinary->uploadApi()->upload(
+                        $request->file('image')->getRealPath(),
+                        ['folder' => 'products']
+                    );
+                    $data['image'] = $result['secure_url'];
+                }
+        
+                // dd($data);
             $product = Product::create($data);
             return redirect()->back()->with('success', 'product created successfully');
         } catch(\Exception $e) {

@@ -75,7 +75,7 @@ class CartController extends Controller
         $this->cartService->clear();
 
         // dd('dsdfjijidjois');
-        return redirect()->route('products.show')->with('success', 'cart cleared successfully');
+        return redirect()->route('menu')->with('success', 'cart cleared successfully');
 
     }
     

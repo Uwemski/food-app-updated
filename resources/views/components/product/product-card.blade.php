@@ -5,7 +5,7 @@
                style="padding-top:65%">
             <div class="absolute inset-0 flex items-center justify-center">
               @if($product->image)
-                <img src="{{ Storage::disk('products')->url($product->image) }}"
+                <img src="{{ $product->image}}"
                      alt="{{ $product->name }}"
                      class="card-img-zoom w-full h-full object-cover">
               @else

@@ -1,7 +1,7 @@
 <x-admin-layout>
 
-<div>
-            Create Product
+        <div>
+            <h2>Create Product</h2>
         </div>
 
         @if(session('success'))
@@ -11,7 +11,7 @@
             <div>{{session('error')}}</div>
         @endif
         <div>
-            <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data" class="w-full max-w-xs">
                 @csrf
                 <div>
                     <select name="category_id" id="" required>
@@ -20,24 +20,47 @@
                         @endforeach
                     </select>
                 </div>
-                <div>
-                    <label for="product">Product name</label>
-                    <input type="text" name='name' id='product' value="{{old('name')}}" required>
+                <div class="">
+                    <div class="md:w-1/3">
+                        <label for="product" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                            Product name
+                        </label>
+                    </div>
+                    <div class="md:w-2/3">
+                        <input type="text" name='name' id='product' value="{{old('name')}}" required 
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-grey-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                    </div>
                 </div>
                 <div>
-                    <label for="price">Price</label>
-                    <input type="number" name="price" id="price" value="{{old('price')}}" required>
+                    <div class="md:w-1/3">
+                        <label for="price" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                        Price
+                        </label>
+                    </div>
+                    <div class="md:w-2/3">
+                        <input type="number" name="price" id="price" value="{{old('price')}}" required
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-grey-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                    </div>
                 </div>
                 <div>
-                    <label for="">Quantity</label>
-                    <input type="number" min:0 name="quantity" id="quantity" value="{{old('quantity')}}" required>
+                    <div class="md:w-1/3">
+                        <label for="" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">Quantity</label>
+                    </div>
+                    <div class="md:w-2/3">
+                        <input type="number" min:0 name="quantity" id="quantity" value="{{old('quantity')}}" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-grey-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
+                    </div>
                 </div>
                 <div>
-                    <label for="">Available?</label>
-                    <select name="is_available" id="">
+                    <div class="md:w-1/3" >
+                        <label for="" class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">Available?</label>
+                    </div>
+                    <div>
+                        <select name="is_available" id="">
                         <option value="1">Yes</option>
                         <option value="0">No</option>
                     </select>
+                    </div>
+                    
                 </div>
                 <div>
                     <label for=""></label>

@@ -61,7 +61,7 @@
                         </form>
                     </td>
                     <!-- either use diffForHumans() or format('d/m/Y') -->
-                    <td>{{$order->created_at->diffForHumans()}}</td>
+                    <td>{{$order->created_at->format('Y-m-d h:i:s')}}</td>
                     <td><a href="{{route('orders.show', $order)}}">view</a></td>
                 </tr>
                 @endforeach
