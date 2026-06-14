@@ -59,14 +59,14 @@ class ProductController extends Controller
 ]);
             $product = Product::create($data);
             return redirect()->back()->with('success', 'product created successfully');
-        } catch(\Exception $e) {
-            // Logg
-            \Log::error('Product creation failed', [
-    'message' => $e->getMessage(),
-    'trace' => $e->getTraceAsString()
-]);
-            return redirect()->back()->with('error', 'Error encountered, try again');
-        }
+        } catch (\Throwable $e) {
+
+    dd([
+        'message' => $e->getMessage(),
+        'file' => $e->getFile(),
+        'line' => $e->getLine(),
+    ]);
+}
     }
 
     public function show(){
