@@ -42,7 +42,7 @@
 <div class="flex flex-col md:flex-row min-h-screen">
 
     {{-- SIDEBAR --}}
-    <x-Nav.admin-nav/>
+    <x-nav.admin-nav/>
 
     {{-- MAIN CONTENT --}}
     <main class="flex-1 overflow-y-auto">
