@@ -53,6 +53,10 @@ class ProductController extends Controller
                 }
         
                 // dd($data);
+                dd([
+    'cloudinary_url' => env('CLOUDINARY_URL'),
+    'has_file' => $request->hasFile('image'),
+]);
             $product = Product::create($data);
             return redirect()->back()->with('success', 'product created successfully');
         } catch(\Exception $e) {
