@@ -57,7 +57,10 @@ class ProductController extends Controller
             return redirect()->back()->with('success', 'product created successfully');
         } catch(\Exception $e) {
             // Logg
-            \Log::error('Product creation failed: '. $e->getMessage());
+            \Log::error('Product creation failed', [
+    'message' => $e->getMessage(),
+    'trace' => $e->getTraceAsString()
+]);
             return redirect()->back()->with('error', 'Error encountered, try again');
         }
     }
