@@ -526,13 +526,14 @@
                   ₦{{ number_format($product->price) }}
                 </div>
                 <div>
-                  <p class="text-muted text-xs sm:text-[0.8rem] leading-relaxed mb-4">
-                  {{$product->quantity}} left
+                  <p class="text-black text-xs sm:text-[0.8rem] leading-relaxed mb-4">
+                  {{$product->quantity}} left 
                 </p>
+                <h4 class="text-black text-[0.8rem] font-semibold">Some text</h4>
                 </div>
                 
               </div>
-              @if($product->is_sold_out)
+              @if($product->quantity < 1)
                 <button disabled class="shrink-0 px-2.5 py-1.5 rounded-full bg-soft/25 text-muted font-semibold text-[0.72rem] cursor-not-allowed">✕ Sold Out</button>
               @else
                 <form action="{{ route('cart.add') }}" method="POST" class="shrink-0">

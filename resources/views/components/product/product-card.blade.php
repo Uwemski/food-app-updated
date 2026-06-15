@@ -111,7 +111,7 @@
                 </div>
               </div>
 
-              @if($product->is_sold_out)
+              @if($product->quantity < 1 || $product->is_available == false)
                 <button disabled
                         class="px-3 py-2 rounded-full bg-soft/25 text-muted font-semibold
                                text-xs cursor-not-allowed shrink-0">
