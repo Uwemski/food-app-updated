@@ -423,6 +423,9 @@
                                   text-[1rem] sm:text-[1.15rem]
                                   {{ ($product->original_price && $product->original_price > $product->price) ? 'text-ember' : 'text-charcoal' }}">
                         ₦{{ number_format($product->price) }}
+                        <p class="text-muted text-xs sm:text-[0.8rem] leading-relaxed mb-4">
+              {{$product->quantity}} left
+            </p>
                       </div>
                     </div>
 
