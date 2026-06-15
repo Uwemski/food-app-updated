@@ -92,7 +92,9 @@
             <p class="text-muted text-xs sm:text-[0.8rem] leading-relaxed mb-4 flex-1 line-clamp-2">
               {{ $product->description }}
             </p>
-            
+            <p class="text-muted text-xs sm:text-[0.8rem] leading-relaxed mb-4">
+              {{$product->quantity}} left
+            </p>
 
             {{-- Footer: price + add btn --}}
             <div class="flex items-center justify-between gap-2 mt-auto">
