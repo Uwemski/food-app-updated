@@ -525,6 +525,12 @@
                 <div class="font-display font-bold text-[1rem] sm:text-[1.15rem] leading-none {{ ($product->original_price && $product->original_price > $product->price) ? 'text-ember' : 'text-charcoal' }}">
                   ₦{{ number_format($product->price) }}
                 </div>
+                <div>
+                  <p class="text-muted text-xs sm:text-[0.8rem] leading-relaxed mb-4">
+                  {{$product->quantity}} left
+                </p>
+                </div>
+                
               </div>
               @if($product->is_sold_out)
                 <button disabled class="shrink-0 px-2.5 py-1.5 rounded-full bg-soft/25 text-muted font-semibold text-[0.72rem] cursor-not-allowed">✕ Sold Out</button>
