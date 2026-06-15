@@ -523,13 +523,14 @@
                   <div class="text-soft line-through text-[0.68rem] leading-none mb-0.5">₦{{ number_format($product->original_price) }}</div>
                 @endif
                 <div class="font-display font-bold text-[1rem] sm:text-[1.15rem] leading-none {{ ($product->original_price && $product->original_price > $product->price) ? 'text-ember' : 'text-charcoal' }}">
+                <h4 class="text-black text-[0.8rem] font-semibold">Some text</h4>
+
                   ₦{{ number_format($product->price) }}
                 </div>
                 <div>
                   <p class="text-black text-xs sm:text-[0.8rem] leading-relaxed mb-4">
                   {{$product->quantity}} left 
                 </p>
-                <h4 class="text-black text-[0.8rem] font-semibold">Some text</h4>
                 </div>
                 
               </div>
