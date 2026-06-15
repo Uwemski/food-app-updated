@@ -65,6 +65,7 @@ class ProductController extends Controller
         'message' => $e->getMessage(),
         'file' => $e->getFile(),
         'line' => $e->getLine(),
+        'CLOUDINARY_URL' => env('CLOUDINARY_URL'),
     ]);
 }
     }
