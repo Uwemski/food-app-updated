@@ -51,12 +51,12 @@
         <x-admin-header/>
 
         {{-- CONTENT --}}
-        <div class="p-8 overflow-y-auto h-[calc(100vh-101px)]">
+        <div class="p-4 md:p-8 overflow-y-auto h-[calc(100vh-101px)] pb-20 md:pb-8">
             {{$slot}}
         </div>
 
     </main>
-
+    <x-nav.mobile-nav/>
 </div>
 
 </body>
