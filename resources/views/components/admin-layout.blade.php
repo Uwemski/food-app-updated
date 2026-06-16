@@ -39,11 +39,6 @@
 </head>
 
 <body class="bg-cream text-charcoal antialiased min-h-screen">
-     <!-- Quick test to verify Alpine is working -->
-    <div x-data="{ open: false }" class="p-5">
-        <button @click="open = !open" class="btn">Toggle Content</button>
-        <p x-show="open" class="mt-2">Alpine.js is bundled and running successfully!</p>
-    </div>
     <div class="flex flex-col md:flex-row min-h-screen">
 
     {{-- Desktop sidebar (hidden on mobile) --}}

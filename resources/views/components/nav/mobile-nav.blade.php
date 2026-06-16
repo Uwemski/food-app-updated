@@ -44,15 +44,7 @@
         {{-- Drawer header --}}
         <div class="flex items-center justify-between px-6 py-5 border-b border-white/10 flex-shrink-0">
             {{-- Brand --}}
-            
-                href="{{ route('admin.dashboard') }}"
-                class="flex items-center gap-3"
-                @click="$store.mobileNav.close()"
-            >
                 <div class="w-9 h-9 rounded-xl bg-flame flex items-center justify-center text-white font-bold text-base shadow-lg">
-                    B
-                </div>
-                <div>
                     <p class="font-bold text-white leading-tight">B-Kitchen</p>
                     <p class="text-white/50 text-xs">Admin Panel</p>
                 </div>
