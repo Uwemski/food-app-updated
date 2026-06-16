@@ -39,31 +39,35 @@
 </head>
 
 <body class="bg-cream text-charcoal antialiased min-h-screen">
-     
-<div class="flex flex-col md:flex-row min-h-screen">
+     <!-- Quick test to verify Alpine is working -->
+    <div x-data="{ open: false }" class="p-5">
+        <button @click="open = !open" class="btn">Toggle Content</button>
+        <p x-show="open" class="mt-2">Alpine.js is bundled and running successfully!</p>
+    </div>
+    <div class="flex flex-col md:flex-row min-h-screen">
 
-{{-- Desktop sidebar (hidden on mobile) --}}
-    {{-- SIDEBAR --}}
-    <x-nav.admin-nav/>
+    {{-- Desktop sidebar (hidden on mobile) --}}
+        {{-- SIDEBAR --}}
+        <x-nav.admin-nav/>
 
-    {{-- MAIN CONTENT --}}
-    <main class="flex-1 overflow-y-auto">
+        {{-- MAIN CONTENT --}}
+        <main class="flex-1 overflow-y-auto">
 
-    {{-- Header contains the hamburger button --}}
-        {{-- TOPBAR --}}
-        <x-admin-header/>
+        {{-- Header contains the hamburger button --}}
+            {{-- TOPBAR --}}
+            <x-admin-header/>
 
-        {{-- CONTENT --}}
-        <div class="p-4 md:p-8 overflow-y-auto h-[calc(100vh-101px)] pb-20 md:pb-8">
-            {{$slot}}
-        </div>
+            {{-- CONTENT --}}
+            <div class="p-4 md:p-8 overflow-y-auto h-[calc(100vh-101px)] pb-20 md:pb-8">
+                {{$slot}}
+            </div>
 
-    </main>
-    {{-- Mobile drawer (hidden on desktop) --}}
-        <x-nav.mobile-nav />
-</div>
+        </main>
+        {{-- Mobile drawer (hidden on desktop) --}}
+            <x-nav.mobile-nav />
+    </div>
 
-<script>
+    <script>
     document.addEventListener('alpine:init', () => {
 
         Alpine.store('mobileNav', {
