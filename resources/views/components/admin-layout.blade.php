@@ -8,15 +8,16 @@
     <title>Admin Dashboard — Ember & Spice</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"
     >
 
     <style>
+    /* {{-- Prevent Alpine cloak flash --}} */
+
+        [x-cloak] { display: none !important; }
         body {
             font-family: 'DM Sans', sans-serif;
         }
@@ -38,15 +39,17 @@
 </head>
 
 <body class="bg-cream text-charcoal antialiased min-h-screen">
-
+     
 <div class="flex flex-col md:flex-row min-h-screen">
 
+{{-- Desktop sidebar (hidden on mobile) --}}
     {{-- SIDEBAR --}}
     <x-nav.admin-nav/>
 
     {{-- MAIN CONTENT --}}
     <main class="flex-1 overflow-y-auto">
 
+    {{-- Header contains the hamburger button --}}
         {{-- TOPBAR --}}
         <x-admin-header/>
 
@@ -56,8 +59,33 @@
         </div>
 
     </main>
-    <x-nav.mobile-nav/>
+    {{-- Mobile drawer (hidden on desktop) --}}
+        <x-nav.mobile-nav />
 </div>
 
+<script>
+    document.addEventListener('alpine:init', () => {
+
+        Alpine.store('mobileNav', {
+            isOpen: false,
+
+            open() {
+                this.isOpen = true;
+                // Prevent background scroll while drawer is open
+                document.documentElement.classList.add('overflow-hidden');
+            },
+
+            close() {
+                this.isOpen = false;
+                document.documentElement.classList.remove('overflow-hidden');
+            },
+
+            toggle() {
+                this.isOpen ? this.close() : this.open();
+            },
+        });
+
+    });
+</script>
 </body>
 </html>
