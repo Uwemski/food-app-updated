@@ -315,7 +315,8 @@
 
       if(data.success){
         // Show success message, update cart count, etc.
-        alert('Product added to cart!');
+        // alert('Product added to cart!');
+        document.getElementById('toast').textContent = '✅ ' + data.message;
         document.getElementById('cart-count').textContent = data.cart_count;
       }
 

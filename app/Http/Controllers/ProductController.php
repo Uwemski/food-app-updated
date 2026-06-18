@@ -56,6 +56,7 @@ class ProductController extends Controller
                 // 
             $product = Product::create($data);
             return response()->json([
+                'success' => true,
                 'message' => 'Product created successfully',
                 'product' => $product
             ], 201);
@@ -63,6 +64,7 @@ class ProductController extends Controller
         } catch (\Throwable $e) {
 
             return response()->json([
+                'success' => false,
                 'message' => 'Error occurred while creating product',
                 'error' => $e->getMessage()
             ], 500);
