@@ -94,7 +94,7 @@
             })
             const data= await response.json();
             if(data.success){
-                console.log('Product added successfully');
+                console.log('Product added successfully', data.message);
                 alert('Product added successfully');
             }
         }catch(error){

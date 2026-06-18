@@ -62,7 +62,12 @@ class CartController extends Controller
 
         $this->cartService->update($validated['product_id'], $validated['quantity']);
 
-        return redirect()->back()->with('success', 'Cart updated!');
+        return response()->json([
+            'message' => 'Cart updated!',
+            'cart_count' => $this->cartService->count(),
+            'cart_total' => $this->cartService->total(),
+            'cart_subtotal' => $this->cartService->subtotal(),
+        ], 200);
     }
 
     //method to remove
@@ -72,7 +77,11 @@ class CartController extends Controller
 
         //redirect
         //you can jsonify later
-        return redirect()->back()->with('success','item deleted successfully');
+
+        return response->json([
+            'success' => true,
+            'message'=>'Item removed from cart successfully',
+        ]);
     }
 
     //method to clear cart

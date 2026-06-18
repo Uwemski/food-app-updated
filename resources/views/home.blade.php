@@ -297,7 +297,7 @@
   async function addToCart(productId){
     const quantity = document.getElementById('quantity').value;
     try{
-      const response = await fetch('', {
+      const response = await fetch('route("cart.add")', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',

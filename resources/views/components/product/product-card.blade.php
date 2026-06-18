@@ -123,7 +123,7 @@
                   @csrf
                   <input type="hidden" name="product_id" value="{{ $product->id }}">
                   <input type="hidden" name="quantity" value="1">
-                  <button type="submit"
+                  <button onclick="addToCart({{$product->id}})"
                           class="btn-add flex items-center gap-1.5 px-3 py-2 rounded-full
                                  bg-gradient-to-r from-flame to-ember text-white font-body
                                  font-semibold text-xs shadow-btn shrink-0">
