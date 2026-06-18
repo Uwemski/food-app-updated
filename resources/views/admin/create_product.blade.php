@@ -5,10 +5,10 @@
         </div>
 
         @if(session('success'))
-            <div>{{session('success')}}</div>
+            <div id="toast">{{session('success')}}</div>
         @endif
         @if(session('error'))
-            <div>{{session('error')}}</div>
+            <div id="toast">{{session('error')}}</div>
         @endif
         <div>
             <form id="productForm" action="{{route('product.store')}}" method="post" enctype="multipart/form-data" class="w-full max-w-xs">
@@ -67,22 +67,23 @@
                     <input type="file" name="image" id="image" required class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-grey-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500">
                 </div>
 
-                <button style="background-color:green">Store</button>
+                <button type="submit" style="background-color:green">Store</button>
             </form>
         </div>
 
 <script>
-
-    document.querySelector('form').addEventListener('submit', createProduct);
+    console.log('Script loaded');
+    document.getElementById('productForm').addEventListener('submit', createProduct);
     
     async function createProduct(event){
-        event.preventdefault();
+        console.log('Form submitted');
+        event.preventDefault();
 
-        const form = document.querySelector('form');
+        const form = event.target;
         const formData = new FormData(this);
 
         try {
-            const response = await fetch('form.action', {
+            const response = await fetch('{{ route("product.store") }}', {
                 method: 'POST',
                 headers:{
                     'X-CSRF-TOKEN': document
@@ -91,11 +92,14 @@
                 },
                 body: formData
 
-            })
+            });
             const data= await response.json();
-            if(data.success){
+            if(response.ok &&data.success){
                 console.log('Product added successfully', data.message);
-                alert('Product added successfully');
+                document.getElementById('toast').textContent = '✅ ' + data.message;
+            }else{
+                console.error('Error adding product:', data.message);
+                document.getElementById('toast').textContent = '❌ ' + data.message;
             }
         }catch(error){
             console.error('Error:', error);

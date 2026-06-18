@@ -60,7 +60,6 @@ class ProductController extends Controller
                 'message' => 'Product created successfully',
                 'product' => $product
             ], 201);
-            // return redirect()->back()->with('success', 'product created successfully');
         } catch (\Throwable $e) {
 
             return response()->json([
