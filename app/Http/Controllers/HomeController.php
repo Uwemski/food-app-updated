@@ -20,18 +20,16 @@ class HomeController extends Controller
     public function index()
     {
         $cart = $this->cartService->getCart();
-        $count = $this->cartService->count();
         $categories = Category::withCount('product')->get();
         $footerCategories = Category::limit(7)->get();
         $featuredProducts = Product::with('category')->where('is_available', true)->paginate(8);
 
-        return view('home', compact('cart', 'count', 'categories', 'footerCategories', 'featuredProducts'));
+        return view('home', compact('cart', 'categories', 'footerCategories', 'featuredProducts'));
     }
 
     public function menu(Request $request)
     {
         $cart = $this->cartService->getCart();
-        $count = $this->cartService->count();
         $categories = Category::withCount('product')->get();
         $footerCategories = Category::limit(7)->get();
         $featuredProducts = Product::with('category')->where('is_available', true)->paginate(8);
@@ -50,6 +48,6 @@ class HomeController extends Controller
             ->paginate(12);
 
             // dd($groupedProducts);
-        return view('menu', compact('cart', 'count', 'categories', 'footerCategories', 'featuredProducts', 'totalProducts', 'totalCategories', 'groupedProducts', 'products'));
+        return view('menu', compact('cart', 'categories', 'footerCategories', 'featuredProducts', 'totalProducts', 'totalCategories', 'groupedProducts', 'products'));
     }
 }
