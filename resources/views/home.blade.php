@@ -270,7 +270,6 @@
 </footer>
 
 {{-- Flash / session message --}}
-@if(session('success'))
   <div id="toast"
        class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50
               bg-charcoal text-white px-6 py-3 rounded-full shadow-card-hover
@@ -278,7 +277,7 @@
     ✅ {{ session('success') }}
   </div>
   <script>setTimeout(()=>document.getElementById('toast')?.remove(), 3000)</script>
-@endif
+
 
 <script>
   // Sticky nav shadow
@@ -312,7 +311,7 @@
       });
 
       const data = await response.json();
-
+      console.log('Add to cart response:', data);
       if(data.success){
         // Show success message, update cart count, etc.
         // alert('Product added to cart!');

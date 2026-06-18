@@ -4,12 +4,10 @@
             <h2>Create Product</h2>
         </div>
 
-        @if(session('success'))
-            <div id="toast">{{session('success')}}</div>
-        @endif
-        @if(session('error'))
-            <div id="toast">{{session('error')}}</div>
-        @endif
+        
+        <div id="toast">{{session('success')}}</div>
+        
+        
         <div>
             <form id="productForm" action="{{route('product.store')}}" method="post" enctype="multipart/form-data" class="w-full max-w-xs">
                 @csrf
