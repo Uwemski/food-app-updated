@@ -120,10 +120,10 @@
            class="relative w-10 h-10 rounded-full bg-warmwhite border border-soft/40 flex items-center
                   justify-center text-base hover:border-flame hover:bg-flame/5 transition-all duration-200">
           🛒
-          @if(session('cart_count', 0) > 0)
+          @if($count > 0)
             <span class="absolute -top-1 -right-1 w-5 h-5 bg-flame text-white text-xs font-bold
                          rounded-full flex items-center justify-center border-2 border-cream">
-              {{ session('cart_count', 0) }}
+              {{ $count }}
             </span>
           @endif
         </a>
@@ -429,7 +429,7 @@
                       </div>
                     </div>
 
-                    @if($product->is_sold_out)
+                    @if($product->quantity <= 0 || !$product->is_available)
                       <button disabled
                               class="shrink-0 px-2.5 py-1.5 rounded-full bg-soft/25 text-muted
                                      font-semibold text-[0.72rem] cursor-not-allowed">
@@ -438,9 +438,9 @@
                     @else
                       <form action="{{ route('cart.add', $product->id) }}" method="POST" class="shrink-0">
                         @csrf
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit"
+                        <input type="hidden" id="product_id" name="product_id" value="{{ $product->id }}">
+                        <input type="hidden" id="quantity" name="quantity" value="1">
+                        <button type="button" onclick="addToCart({{ $product->id }})"
                                 class="btn-add flex items-center gap-1 px-2.5 sm:px-3.5 py-1.5 sm:py-2
                                        rounded-full bg-gradient-to-r from-flame to-ember text-white
                                        font-body font-semibold text-[0.75rem] sm:text-xs shadow-btn">
@@ -490,7 +490,7 @@
                 </span>
               @endif
             </div>
-            @if($product->is_sold_out)
+            @if($product->quantity <= 0 || !$product->is_available)
               <div class="absolute inset-0 bg-charcoal/55 flex items-center justify-center z-10">
                 <span class="bg-charcoal/80 text-white/85 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">Sold Out</span>
               </div>
@@ -542,9 +542,9 @@
               @else
                 <form action="{{ route('cart.add') }}" method="POST" class="shrink-0">
                   @csrf
-                  <input type="hidden" name="product_id" value="{{ $product->id }}">
-                  <input type="hidden" name="quantity" value="1">
-                  <button type="submit" class="btn-add flex items-center gap-1 px-3 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-flame to-ember text-white font-body font-semibold text-[0.75rem] shadow-btn">
+                  <input type="hidden" id="product_id" name="product_id" value="{{ $product->id }}">
+                  <input type="hidden" id="quantity" name="quantity" value="1">
+                  <button type="button" onclick="addToCart({{ $product->id }})" class="btn-add flex items-center gap-1 px-3 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-flame to-ember text-white font-body font-semibold text-[0.75rem] shadow-btn">
                     <span class="text-base leading-none">＋</span> Add
                   </button>
                 </form>
@@ -688,6 +688,37 @@
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  async function addToCart(productId){
+    const quantity = document.getElementById('quantity').value;
+    try{
+      const response = await fetch('{{ route("cart.add") }}', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRF-TOKEN': document
+            .querySelector('meta[name="csrf-token"]')
+            .getAttribute('content')
+        },
+        body: JSON.stringify({
+          product_id: productId,
+          quantity: quantity
+        })
+      });
+
+      const data = await response.json();
+      console.log('Add to cart response:', data);
+      if(data.success){
+        // Show success message, update cart count, etc.
+        // alert('Product added to cart!');
+        document.getElementById('toast').textContent = '✅ ' + data.message;
+        document.getElementById('cart-count').textContent = data.cart_count;
+      }
+
+    }catch(error){
+      console.error('Error adding to cart:', error);
+    }
+  }
 </script>
 </body>
 </html>

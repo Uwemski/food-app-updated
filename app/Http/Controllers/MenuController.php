@@ -20,6 +20,8 @@ class MenuController extends Controller
     //
     public function index(Request $request)
     {
+        $cart = $this->cartService->getCart();
+        $count = $this->cartService->count();
         $categories = Category::withCount('product')->get();
         $totalProducts = Product::count();
         $groupedProducts = Category::with(['product' => function($q) use ($request) {
@@ -34,6 +36,6 @@ class MenuController extends Controller
             ->when($request->search,   fn($q) => $q->where('name', 'like', "%{$request->search}%"))
             ->paginate(12);
 
-        return view('menu', compact('categories', 'totalProducts', 'groupedProducts', 'products'));
+        return view('menu', compact('categories', 'totalProducts', 'groupedProducts', 'products', 'cart', 'count'));
     }
 }
