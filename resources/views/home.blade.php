@@ -297,7 +297,7 @@
   async function addToCart(productId){
     const quantity = document.getElementById('quantity').value;
     try{
-      const response = await fetch('route("cart.add")', {
+      const response = await fetch('{{ route("cart.add") }}', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
@@ -305,7 +305,7 @@
             .querySelector('meta[name="csrf-token"]')
             .getAttribute('content')
         },
-        body: JSON.stingify({
+        body: JSON.stringify({
           product_id: productId,
           quantity: quantity
         })
@@ -315,8 +315,10 @@
 
       if(data.success){
         // Show success message, update cart count, etc.
-        alert('Productadded to cart!');
+        alert('Product added to cart!');
+        document.getElementById('cart-count').textContent = data.cart_count;
       }
+
     }catch(error){
       console.error('Error adding to cart:', error);
     }

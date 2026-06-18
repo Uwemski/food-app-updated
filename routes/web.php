@@ -58,7 +58,7 @@ Route::post('/admin/{product}/edit', [ProductController::class, 'edit'])->name('
 
 Route::DELETE('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 Route::get('/cart/view', [CartController::class, 'index'])->name('cart.index');
-Route::post('/add-to-cart/{id}', [CartController::class, 'add'])->name('cart.add');
+Route::post('/add-to-cart', [CartController::class, 'add'])->name('cart.add');
 Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 Route::delete('/cart/delete/{id}', [CartController::class, 'remove'])->name('cart.delete');
 

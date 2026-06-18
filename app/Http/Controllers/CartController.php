@@ -43,6 +43,7 @@ class CartController extends Controller
 
         $this->cartService->add($product, $quantity);
         return response()->json([
+            'success' => true,
             'message' => 'Product added to cart successfully',
             'cart_count' => $this->cartService->count(),
             'cart_total' => $this->cartService->total(),
@@ -63,6 +64,7 @@ class CartController extends Controller
         $this->cartService->update($validated['product_id'], $validated['quantity']);
 
         return response()->json([
+            'success' => true,
             'message' => 'Cart updated!',
             'cart_count' => $this->cartService->count(),
             'cart_total' => $this->cartService->total(),
