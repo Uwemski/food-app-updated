@@ -41,7 +41,7 @@ class CartService
         }
         $cart[$productId]['quantity'] = $quantity;
         
-        $this->saveCart('cart', $cart);
+        $this->saveCart( $cart);
     }
 
     public function remove($id)
