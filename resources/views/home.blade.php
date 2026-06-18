@@ -293,6 +293,34 @@
     btn.textContent = isActive ? '🤍' : '❤️';
     // POST to wishlist route if authenticated
   }
+
+  async function addToCart(productId){
+    const quantity = document.getElementById('quantity').value;
+    try{
+      const response = await fetch('', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          'X-CSRF-TOKEN': document
+            .querySelector('meta[name="csrf-token"]')
+            .getAttribute('content')
+        },
+        body: JSON.stingify({
+          product_id: productId,
+          quantity: quantity
+        })
+      });
+
+      const data = await response.json();
+
+      if(data.success){
+        // Show success message, update cart count, etc.
+        alert('Productadded to cart!');
+      }
+    }catch(error){
+      console.error('Error adding to cart:', error);
+    }
+  }
 </script>
 </body>
 </html>

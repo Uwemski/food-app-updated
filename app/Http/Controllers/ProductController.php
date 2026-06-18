@@ -55,16 +55,18 @@ class ProductController extends Controller
                 // dd($data);
                 // 
             $product = Product::create($data);
-            return redirect()->back()->with('success', 'product created successfully');
+            return response()->json([
+                'message' => 'Product created successfully',
+                'product' => $product
+            ], 201);
+            // return redirect()->back()->with('success', 'product created successfully');
         } catch (\Throwable $e) {
 
-    dd([
-        'message' => $e->getMessage(),
-        'file' => $e->getFile(),
-        'line' => $e->getLine(),
-        'CLOUDINARY_URL' => env('CLOUDINARY_URL'),
-    ]);
-}
+            return response()->json([
+                'message' => 'Error occurred while creating product',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function show(){

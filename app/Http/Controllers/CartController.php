@@ -42,7 +42,13 @@ class CartController extends Controller
         $quantity = $validated['quantity'] ?? 1;
 
         $this->cartService->add($product, $quantity);
-        return redirect()->back()->with('success', 'product added to cart');
+        return response()->json([
+            'message' => 'Product added to cart successfully',
+            'cart_count' => $this->cartService->count(),
+            'cart_total' => $this->cartService->total(),
+            'cart_subtotal' => $this->cartService->subtotal(),
+        ], 200);
+        // return redirect()->back()->with('success', 'product added to cart');
     }
 
     //method to update
