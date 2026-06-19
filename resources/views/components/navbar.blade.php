@@ -67,10 +67,12 @@
            class="relative w-9 h-9 rounded-full bg-warmwhite border border-soft/40 flex items-center
                   justify-center text-sm hover:border-flame transition-all">
           🛒
-          @if(($count ?? 0) > 0)
-            <span class="absolute -top-1 -right-1 w-4 h-4 bg-flame text-white text-xs font-bold
+          @if(count($cart) > 0)
+            <span 
+              id="cart-count"
+              class="absolute -top-1 -right-1 w-4 h-4 bg-flame text-white text-xs font-bold
                          rounded-full flex items-center justify-center border-2 border-cream">
-              {{ $count }}
+              {{ count($cart) }}
             </span>
           @endif
         </a>
