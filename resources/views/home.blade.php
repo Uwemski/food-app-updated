@@ -296,6 +296,7 @@
 
   async function addToCart(productId){
     const quantity = document.getElementById('quantity').value;
+    const badge = document.getElementById('cart-count');
     try{
       const response = await fetch('{{ route("cart.add") }}', {
         method: 'POST',
@@ -313,10 +314,17 @@
 
       const data = await response.json();
 
+      console.log('Response:', data);
       if(data.success){
         // Show success message, update cart count, etc.
+        //code doesnt fire
         alert('Product added to cart!');
-        document.getElementById('toast').textContent = '✅ ' + data.message;
+        badge.textContent = data.cart_count;
+        if(data.cart_count > 0){
+          badge.classList.remove('hidden');
+        } else {
+          badge.classList.add('hidden');
+        }
         document.getElementById('cart-count').textContent = data.cart_count;
       }
 
