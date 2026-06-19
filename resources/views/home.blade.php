@@ -318,7 +318,7 @@
       console.log('Response:', data);
       if(data.success){
         // Show success message, update cart count, etc.
-        //code doesnt fire
+        //code fires
         alert('Product added to cart!');
         badge.textContent = data.cart_count;
         if(data.cart_count > 0){

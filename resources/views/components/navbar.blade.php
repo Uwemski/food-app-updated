@@ -50,14 +50,12 @@
            class="relative w-10 h-10 rounded-full bg-warmwhite border border-soft/40 flex items-center
                   justify-center text-base hover:border-flame hover:bg-flame/5 transition-all duration-200">
           🛒
-          @if(count($cart) > 0)
             <span
                 id="cart-count"
                 class="absolute -top-1 -right-1 w-5 h-5 bg-flame text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-cream {{ count($cart) ? '' : 'hidden' }}"
             >
                 {{ count($cart) }}
             </span>
-          @endif
         </a>
       </div>
 
@@ -67,14 +65,12 @@
            class="relative w-9 h-9 rounded-full bg-warmwhite border border-soft/40 flex items-center
                   justify-center text-sm hover:border-flame transition-all">
           🛒
-          @if(count($cart) > 0)
             <span 
               id="cart-count-mobile"
               class="absolute -top-1 -right-1 w-4 h-4 bg-flame text-white text-xs font-bold
                          rounded-full flex items-center justify-center border-2 border-cream">
               {{ count($cart) }}
             </span>
-          @endif
         </a>
         <button id="mobileMenuBtn"
                 onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"
