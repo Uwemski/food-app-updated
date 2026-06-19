@@ -69,7 +69,7 @@
           🛒
           @if(count($cart) > 0)
             <span 
-              id="cart-count"
+              id="cart-count-mobile"
               class="absolute -top-1 -right-1 w-4 h-4 bg-flame text-white text-xs font-bold
                          rounded-full flex items-center justify-center border-2 border-cream">
               {{ count($cart) }}

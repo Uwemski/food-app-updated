@@ -297,6 +297,7 @@
   async function addToCart(productId){
     const quantity = document.getElementById('quantity').value;
     const badge = document.getElementById('cart-count');
+    const badgeMobile = document.getElementById('cart-count-mobile');
     try{
       const response = await fetch('{{ route("cart.add") }}', {
         method: 'POST',
@@ -325,7 +326,12 @@
         } else {
           badge.classList.add('hidden');
         }
-        document.getElementById('cart-count').textContent = data.cart_count;
+        badgeMobile.textContent = data.cart_count;
+        if(data.cart_count > 0){
+          badgeMobile.classList.remove('hidden');
+        } else {
+          badgeMobile.classList.add('hidden');
+        }
       }
 
     }catch(error){
