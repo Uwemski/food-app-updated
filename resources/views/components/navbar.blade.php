@@ -98,11 +98,11 @@
                 {{ request()->routeIs('menu*') ? 'bg-flame/10 text-flame' : '' }}">
         🍽️ &nbsp;Menu
       </a>
-      <a href="#"
+      <a href="{{ route('about') }}"
          class="px-4 py-2.5 rounded-xl font-body font-medium text-sm text-brown hover:bg-flame/8 hover:text-flame transition-colors">
         📖 &nbsp;About
       </a>
-      <a href="#"
+      <a href="#contact"
          class="px-4 py-2.5 rounded-xl font-body font-medium text-sm text-brown hover:bg-flame/8 hover:text-flame transition-colors">
         📞 &nbsp;Contact
       </a>

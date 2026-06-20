@@ -23,7 +23,7 @@
       <div>
         <h4 class="font-body font-semibold text-white text-sm uppercase tracking-widest mb-4">Quick Links</h4>
         <ul class="space-y-2.5 text-sm">
-          @foreach(['Home'=>'home','Menu'=>'menu','About'=>'#','Contact'=>'#'] as $label => $route)
+          @foreach(['Home'=>'home','Menu'=>'menu','About'=>'#','Contact'=>'#contact'] as $label => $route)
             <li>
               <a href="{{ is_string($route) && str_starts_with($route,'#') ? $route : route($route) }}"
                  class="hover:text-flame transition-colors duration-200">{{ $label }}</a>

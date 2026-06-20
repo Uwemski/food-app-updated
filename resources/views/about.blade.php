@@ -6,24 +6,68 @@
     <title>Document</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
+<style>
+    .nav-link::after { content:''; display:block; height:2px; background:var(--tw-color-flame,#E8440A); transform:scaleX(0); transition:transform .25s ease; border-radius:2px; }
+      .nav-link:hover::after { transform:scaleX(1); }
+      @keyframes shimmer { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+      .skeleton { background:linear-gradient(90deg,#f0e8e1 25%,#fdf0e8 50%,#f0e8e1 75%); background-size:400px 100%; animation:shimmer 1.4s infinite; }
+      .promo-card { transition: transform .28s ease, box-shadow .28s ease; }
+      .promo-card:hover { transform: translateY(-4px); }
+      @keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+    }
+
+    @keyframes fadeUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .animate-float {
+        animation: float 4s ease-in-out infinite;
+    }
+
+    .animate-fade-up {
+        animation: fadeUp .6s ease both;
+    }
+
+    .animate-fade-in {
+        animation: fadeIn .4s ease both;
+    }
+</style>
 <body>
+
+    <!-- NavBar -->
+    <x-navbar :cart="$cart"/>
     <section class="bg-white">
 
-```
 <!-- HERO -->
-<div class="relative bg-green-600 text-white">
-    <div class="max-w-7xl mx-auto px-6 py-24 text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">
-            Fresh Meals Delivered To Your Doorstep
-        </h1>
-
-        <p class="max-w-3xl mx-auto text-lg md:text-xl text-green-100">
-            We make ordering delicious meals simple, fast, and convenient.
-            Whether you're at home, work, or on the move, your favorite
-            meals are only a few clicks away.
-        </p>
-    </div>
-</div>
+<section class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+  <x-hero-section/>
+</section>
 
 <!-- ABOUT -->
 <div class="max-w-7xl mx-auto px-6 py-20">
@@ -176,53 +220,7 @@
 </div>
 
 <!-- TESTIMONIALS -->
-<div class="max-w-7xl mx-auto px-6 py-20">
-
-    <div class="text-center mb-14">
-        <h2 class="text-3xl font-bold">
-            What Customers Say
-        </h2>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8">
-
-        <div class="bg-gray-50 p-6 rounded-xl">
-            <p class="text-gray-600 italic">
-                "The ordering process was smooth and my food arrived hot
-                and fresh. Highly recommended."
-            </p>
-
-            <h4 class="mt-4 font-semibold">
-                Sarah A.
-            </h4>
-        </div>
-
-        <div class="bg-gray-50 p-6 rounded-xl">
-            <p class="text-gray-600 italic">
-                "Excellent service and delicious meals. I'll definitely
-                order again."
-            </p>
-
-            <h4 class="mt-4 font-semibold">
-                Michael O.
-            </h4>
-        </div>
-
-        <div class="bg-gray-50 p-6 rounded-xl">
-            <p class="text-gray-600 italic">
-                "Fast delivery and great customer support. A wonderful
-                experience."
-            </p>
-
-            <h4 class="mt-4 font-semibold">
-                Grace E.
-            </h4>
-        </div>
-
-    </div>
-
-</div>
-
+<x-testimonials/>
 <!-- CTA -->
 <div class="bg-gray-900 text-white">
     <div class="max-w-4xl mx-auto px-6 py-20 text-center">
@@ -243,7 +241,8 @@
 
     </div>
 </div>
-```
+
+<x-footer/>
 
 </section>
 
