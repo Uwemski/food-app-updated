@@ -177,11 +177,13 @@
             event.preventDefault();
             
             try{
-                const response= await fetch('{{route("cart.delete", $key)}}', {
+                const response= await fetch(`/cart/delete/${key}`, {
                     method: 'DELETE',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                        'Accept': 'application/json',
+                        'X-CSRF-TOKEN': document
+                            .querySelector('meta[name="csrf-token"]').
+                            .content
                     }
                 });
 
@@ -192,12 +194,12 @@
 
                     console.log(data);
                     // Optionally, you can update the cart UI here without reloading
-                    document.getElementById('cart-row-{{ $key }}').remove();
+                    document.getElementById('cart-row-${key} }}').remove();
 
                     document.getElementById('cart-subtotal').textContent = `₦${data.subtotal}`;
 
-                    // document.getElementById('delivery-fee').textContent = `₦${data.deliveryFee}`;
-                    // document.getElementById('cart-total').textContent = `₦${data.total}`;
+                    document.getElementById('delivery-fee').textContent = `₦${data.deliveryFee}`;
+                    document.getElementById('cart-total').textContent = `₦${data.total}`;
                     
                 }else{
                     throw new Error(data.message || 'Failed to remove item');
