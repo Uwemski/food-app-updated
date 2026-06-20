@@ -177,7 +177,7 @@
             event.preventDefault();
             
             try{
-                const response= await fetch('{{route("cart.delete")}}', {
+                const response= await fetch('{{route("cart.delete", $key)}}', {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
