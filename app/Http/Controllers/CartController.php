@@ -78,12 +78,14 @@ class CartController extends Controller
         $this->cartService->remove($id);
 
         //redirect
-        //you can jsonify later
 
         return response->json([
             'success' => true,
             'message'=>'Item removed from cart successfully',
-        ]);
+            'total' => $this->cartService->total(),
+            'subtotal' => $this->cartService->subtotal(),
+            'cart_count' => $this->cartService->count(),
+        ], 200);
     }
 
     //method to clear cart

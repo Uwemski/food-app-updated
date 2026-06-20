@@ -70,7 +70,7 @@
 
                         <tbody>
                             @foreach($cart as $key => $value)
-                                <tr class="border-t">
+                                <tr id="cart-row-{{$key}}"class="border-t">
                                     <td class="px-4 py-4">
                                         {{ $loop->iteration }}
                                     </td>
@@ -92,7 +92,7 @@
                                     </td>
 
                                     <td class="px-4 py-4 text-center">
-                                        <form action="{{ route('cart.delete', $key) }}"
+                                        <form id="remove-item-{{ $key }}" action="{{ route('cart.delete', $key) }}"
                                               method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -115,21 +115,21 @@
 
                         <div class="flex justify-between">
                             <span class="text-gray-600">Subtotal</span>
-                            <span class="font-medium">
+                            <span id="cart-subtotal" class="font-medium">
                                 ₦{{ number_format($subtotal, 2) }}
                             </span>
                         </div>
 
                         <div class="flex justify-between">
                             <span class="text-gray-600">Delivery Fee</span>
-                            <span class="font-medium">
+                            <span id="delivery-fee" class="font-medium">
                                 ₦{{ number_format($deliveryFee, 2) }}
                             </span>
                         </div>
 
                         <div class="border-t pt-3 flex justify-between text-lg font-bold">
                             <span>Total</span>
-                            <span>
+                            <span id="cart-total" class="font-bold text-green-600">
                                 ₦{{ number_format($total, 2) }}
                             </span>
                         </div>
@@ -169,6 +169,45 @@
         @endif
 
     </div>
+    <script>
+        document.getElementById('').addEventListener('submit',removeItem);
 
+        async function removeItem(){
+            event.preventDefault();
+            
+            try{
+                const response= await fetch('{{route("cart.remove")}}', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    }
+                });
+
+                const data = await response.json();
+
+                if(response.ok && data.success){
+                    alert('Item removed successfully');
+
+
+                    // Optionally, you can update the cart UI here without reloading
+                    document.getElementById('cart-row-{{ $key }}').remove();
+
+                    document.getElementById('cart-subtotal').textContent = `₦${data.subtotal}`;
+
+                    document.getElementById('delivery-fee').textContent = `₦${data.deliveryFee}`;
+                    document.getElementById('cart-total').textContent = `₦${data.total}`;
+                    
+                }else{
+                    throw new Error(data.message || 'Failed to remove item');
+                }
+
+            }catch(error){
+                console.error('Error removing item:', error);
+            }
+
+        }
+
+    </script>
 </body>
 </html>
