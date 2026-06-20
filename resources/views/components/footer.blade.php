@@ -50,7 +50,7 @@
       </div>
 
       {{-- Contact --}}
-      <div>
+      <div id="contact">
         <h4 class="font-body font-semibold text-white text-sm uppercase tracking-widest mb-4">Contact</h4>
         <ul class="space-y-3 text-sm">
           <li class="flex gap-2.5"><span class="shrink-0">📍</span> {{ $settings->address ?? '14 Bola Ajibola St, Lagos' }}</li>
