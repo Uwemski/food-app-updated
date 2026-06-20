@@ -98,6 +98,8 @@
                                             @method('DELETE')
 
                                             <button
+                                                type="button"
+                                                onclick="removeItem('{{ $key }}')"
                                                 class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
                                                 Delete
                                             </button>
@@ -170,9 +172,8 @@
 
     </div>
     <script>
-        document.getElementById('').addEventListener('submit',removeItem);
 
-        async function removeItem(){
+        async function removeItem(key){
             event.preventDefault();
             
             try{

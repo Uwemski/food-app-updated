@@ -79,7 +79,7 @@ class CartController extends Controller
 
         //redirect
 
-        return response->json([
+        return response()->json([
             'success' => true,
             'message'=>'Item removed from cart successfully',
             'total' => $this->cartService->total(),
