@@ -189,7 +189,7 @@
                 if(response.ok && data.success){
                     alert('Item removed successfully');
 
-
+                    console.log(data);
                     // Optionally, you can update the cart UI here without reloading
                     document.getElementById('cart-row-{{ $key }}').remove();
 
