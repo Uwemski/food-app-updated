@@ -23,8 +23,10 @@
                   {{ request()->routeIs('menu*') ? 'text-flame' : '' }}">Menu</a>
         <a href="{{ route('about') ?? '#' }}"
            class="nav-link font-body font-medium text-sm text-brown hover:text-flame transition-colors pb-0.5">About</a>
-        <a href="{{ route('contact') ?? '#contact' }}"
-           class="nav-link font-body font-medium text-sm text-brown hover:text-flame transition-colors pb-0.5">Contact</a>
+        <a href="#contact"
+           class="nav-link font-body font-medium text-sm text-brown hover:text-flame transition-colors pb-0.5">
+          Contact
+        </a>
       </div>
 
       {{-- Desktop Actions --}}

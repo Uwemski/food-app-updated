@@ -1,4 +1,4 @@
-<div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-8">
+<div id="contact" class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
       {{-- Brand col --}}
@@ -50,7 +50,7 @@
       </div>
 
       {{-- Contact --}}
-      <div id="contact">
+      <div >
         <h4 class="font-body font-semibold text-white text-sm uppercase tracking-widest mb-4">Contact</h4>
         <ul class="space-y-3 text-sm">
           <li class="flex gap-2.5"><span class="shrink-0">📍</span> {{ $settings->address ?? '14 Bola Ajibola St, Lagos' }}</li>
