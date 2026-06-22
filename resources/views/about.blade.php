@@ -261,12 +261,6 @@
         <div class="bg-[var(--char)] text-white py-20">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-
-                    <div>
-                        <h3 class="font-display text-4xl font-semibold text-[var(--ember)]">120+</h3>
-                        <p class="mt-2 text-white/70">Partner Kitchens</p>
-                    </div>
-
                     <div>
                         <h3 class="font-display text-4xl font-semibold text-[var(--ember)]">12</h3>
                         <p class="mt-2 text-white/70">Cities Served</p>

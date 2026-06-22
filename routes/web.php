@@ -15,11 +15,9 @@ use App\Http\Controllers\MenuController;
 //     return view('welcome');
 // });
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 
-Route::get('about', function(){
-    return view('about');
-})->name('about');
 Route::get('contact', function(){
     return view('contact');
 })->name('contact');
