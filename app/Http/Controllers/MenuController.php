@@ -20,6 +20,10 @@ class MenuController extends Controller
     //
     public function index(Request $request)
     {
+        $data=$request->validate([
+            'search' => 'nullable|string|max:255',
+        ]);
+
         $cart = $this->cartService->getCart();
         $count = $this->cartService->count();
         $categories = Category::withCount('product')->get();
