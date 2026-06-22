@@ -83,6 +83,7 @@
         <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-soft pointer-events-none text-sm">🔍</span>
         <input type="search"
                id="productSearch"
+               name="query"
                placeholder="Search dishes, ingredients…"
                value="{{ request('search') }}"
                class="w-full pl-9 pr-4 py-2.5 rounded-full border-[1.5px] border-soft/40 bg-warmwhite
