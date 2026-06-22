@@ -51,4 +51,12 @@ class HomeController extends Controller
             // dd($groupedProducts);
         return view('menu', compact('cart', 'categories', 'footerCategories', 'featuredProducts', 'totalProducts', 'totalCategories', 'groupedProducts', 'products'));
     }
+
+    public function about()
+    {
+        $cart= $this->cartService->getCart();
+        $categories = Category::withCount('product')->get();
+
+        return view('about', compact('cart', 'categories'));
+    }
 }
