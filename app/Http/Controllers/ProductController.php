@@ -124,7 +124,7 @@ class ProductController extends Controller
         ]);
 
         $products = Product::where('name', 'like', "%{$data['query']}%")->get();
-
+        dd($products);
         return view('product.search_results', compact('products'));
 
     }
