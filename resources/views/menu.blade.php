@@ -80,7 +80,7 @@
 
       {{-- Desktop search (menu page prominently shows search) --}}
       <div class="hidden md:flex flex-1 max-w-sm relative mx-4">
-          <form action="{{ route('menu.index') }}"
+          <form action="{{ route('menu') }}"
                 method="GET" class="w-full">
                 @csrf
 
@@ -152,7 +152,7 @@
     <div id="mobileMenu" class="hidden md:hidden border-t border-soft/20 py-4 space-y-1">
       <div class="relative mb-3">
         <form 
-          action="{{ route('menu.index') }}"
+          action="{{ route('menu') }}"
           method="GET">
           @csrf
           <button
