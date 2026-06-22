@@ -80,21 +80,26 @@
 
       {{-- Desktop search (menu page prominently shows search) --}}
       <div class="hidden md:flex flex-1 max-w-sm relative mx-4">
-          <button
+          <form action="{{ route('menu.index') }}"
+                method="GET" class="w-full">
+                @csrf
+
+            <button
               type="submit"
               class="absolute left-3 top-1/2 -translate-y-1/2 text-soft"
               aria-label="Search">
               🔍
-          </button>
-          <input type="search"
-               id="productSearch"
-               name="search"
-               placeholder="Search dishes, ingredients…"
-               value="{{ request('search') }}"
-               class="w-full pl-9 pr-4 py-2.5 rounded-full border-[1.5px] border-soft/40 bg-warmwhite
-                      font-body text-sm text-charcoal placeholder-soft
-                      focus:outline-none focus:border-flame focus:ring-2 focus:ring-flame/10
+            </button>
+            <input type="search"
+                id="productSearch"
+                name="search"
+                placeholder="Search dishes, ingredients…"
+                value="{{ request('search') }}"
+                class="w-full pl-9 pr-4 py-2.5 rounded-full border-[1.5px] border-soft/40 bg-warmwhite
+                        font-body text-sm text-charcoal placeholder-soft
+                        focus:outline-none focus:border-flame focus:ring-2 focus:ring-flame/10
                       transition-all duration-200">
+          </form>
       </div>
 
       {{-- Desktop nav links --}}
@@ -146,11 +151,25 @@
     {{-- Mobile menu + mobile search --}}
     <div id="mobileMenu" class="hidden md:hidden border-t border-soft/20 py-4 space-y-1">
       <div class="relative mb-3">
-        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-soft pointer-events-none text-sm">🔍</span>
-        <input type="search" placeholder="Search dishes…"
+        <form 
+          action="{{ route('menu.index') }}"
+          method="GET">
+          @csrf
+          <button
+              type="submit"
+              class="absolute left-3 top-1/2 -translate-y-1/2 text-soft"
+              aria-label="Search">
+              🔍
+          </button>
+          <input type="search"
+              name="search"
+              value="{{ request('search') }}"
+              placeholder="Search dishes…"
                class="w-full pl-9 pr-4 py-2.5 rounded-full border border-soft/40 bg-warmwhite
                       font-body text-sm text-charcoal placeholder-soft
                       focus:outline-none focus:border-flame transition-all duration-200">
+        </form>
+        
       </div>
       <a href="{{ route('home') }}"
          class="block px-4 py-2.5 rounded-xl font-body font-medium text-sm text-brown hover:bg-flame/8 hover:text-flame transition-colors">
@@ -680,8 +699,10 @@
       const q = this.value.toLowerCase().trim();
       document.querySelectorAll('.product-card').forEach(card => {
         const name = card.dataset.name || '';
-        card.closest('article').parentElement
-          .style.display = (!q || name.includes(q)) ? '' : 'none';
+        card.style.display =
+    (!q || name.includes(q))
+        ? ''
+        : 'none';
       });
     });
   }
