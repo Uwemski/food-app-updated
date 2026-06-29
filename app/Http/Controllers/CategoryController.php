@@ -40,9 +40,17 @@ class CategoryController extends Controller
             ]);#
 
             if($c){
-                return redirect()->back()->with('success', 'Category created successfully');
+                return response()->json([
+                    'success'=>true,
+                    'message'=>'Category created successfully',
+                    'data'=>$c
+                ], 201);
+                // return redirect()->back()->with('success', 'Category created successfully');
             }else{
-                return redirect()->back()->with('error', 'Error encountered, please try again');
+                return response()->json([
+                    'success'=>false,
+                    'message'=>'Error encountered, please try again'
+                ],500);
             }
     }
 

@@ -22,10 +22,35 @@
                 <small>{{message}}</small>
             @enderror
             <div>
-                <button>Create</button>
+                <button type="button" onclick="createCategory()">Create</button>
             </div>
         </form>
     </div>
 
-
+<script>
+    async function createCategory(){
+        try{
+            const response= await fetch('{{route('category.store')}}', {
+                'method': 'POST',
+                'headers': {
+                    'content-type': 'application/json',
+                    'x-csrf-token': '{{csrf_token()}}'
+                },
+                'body': JSON.stringify({
+                    'name': document.getElementById('name').value
+                })
+            })
+            const data = response.json();
+            if(data.response.ok && data.success){
+                alert('Category created successfully');
+                console.log('Category created successfully', data.message);
+            }else{
+                alert('Error creating category:' + data.message);
+                console.error('Error creating category:', data.message);
+            }
+        }catch(error){
+            console.error('Error creating category:', error);
+        }
+    }
+</script>
 </x-admin-layout>

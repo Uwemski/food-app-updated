@@ -116,16 +116,4 @@ class ProductController extends Controller
         return view('admin.edit_product', compact('product','category') );
     }
 
-    //method to search product
-    public function search(Request $request)
-    {
-        $data = $request->validate([
-            'query'=>'required'
-        ]);
-
-        $products = Product::where('name', 'like', "%{$data['query']}%")->get();
-        dd($products);
-        return view('product.search_results', compact('products'));
-
-    }
 }
