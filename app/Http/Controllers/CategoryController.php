@@ -63,7 +63,8 @@ class CategoryController extends Controller
     //method to view all
     public function show()
     {
-        $categories = Category::all();//very bad,practice using eager loading
+        $categories = Category::with('products')
+            ->paginate(10);//very bad,practice using eager loading
 
         // dd($category);
         return view('admin.category', compact('categories'));
@@ -74,5 +75,9 @@ class CategoryController extends Controller
         $category->delete();
 
         return redirect()->back()->with('success', 'category removed successfully');
+        // return response()->json([
+        //     'success' => true,
+        //     'message' => 'category deleted successfully'
+        // ], 201);
     }
 }

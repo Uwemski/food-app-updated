@@ -3,7 +3,7 @@
     On mobile: shows hamburger that opens the mobile drawer via Alpine store.
     On desktop: hamburger is hidden (md:hidden).
 --}}
-<header class="sticky top-0 z-30 flex items-center justify-between px-4 md:px-8 h-[64px] bg-white border-b border-soft/15 shadow-sm">
+<header class="sticky top-0 z-30 flex items-center justify-between px-4 md:px-8 min-h-[64px] py-3 md:py-0 bg-white border-b border-soft/15 shadow-sm">
 
     {{-- Left side: hamburger (mobile only) + page title --}}
     <div class="flex items-center gap-3">
@@ -28,12 +28,12 @@
         </button>
 
         {{-- Page title — replace with a @yield or $slot if you want per-page titles --}}
-        <div>
-                    <h2 class="font-display text-3xl font-bold text-charcoal leading-tight">
+        <div class='mb-4'>
+                    <h2 class="font-display text-xl sm:text-2xl md:text-3xl font-bold text-charcoal leading-tight">
                         Dashboard Overview
                     </h2>
 
-                    <p class="text-muted text-sm mt-1">
+                    <p class="text-muted text-xs sm:text-sm mt-1 leading-relaxed">
                         Monitor sales, orders, inventory & customer activity.
                     </p>
                 </div>
