@@ -45,6 +45,7 @@ Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.d
 Route::get('/admin/create-category', [CategoryController::class, 'index'])->name('category.create');
 Route::post('/admin/create-category', [CategoryController::class, 'store'])->name('category.store');
 Route::get('/admin/view-category', [CategoryController::class, 'show'])->name('category.show');//without middleware
+Route::delete('/admin/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 Route::get('/admin/create-product', [ProductController::class, 'index'])->name('product.create');
 Route::post('/admin/create-product', [ProductController::class, 'store'])->name('product.store');

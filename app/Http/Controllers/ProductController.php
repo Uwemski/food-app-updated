@@ -72,7 +72,7 @@ class ProductController extends Controller
 
     public function show(){
         $products = Product::all();
-
+    
         return view('admin.products', compact('products'));
     }
 
@@ -115,5 +115,4 @@ class ProductController extends Controller
 
         return view('admin.edit_product', compact('product','category') );
     }
-
 }

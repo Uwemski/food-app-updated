@@ -57,7 +57,7 @@ class CategoryController extends Controller
     //method to update
     public function update()
     {
-
+        //will update affect already registered product(s)?
     }
 
     //method to view all
@@ -67,5 +67,12 @@ class CategoryController extends Controller
 
         // dd($category);
         return view('admin.category', compact('categories'));
+    }
+
+    public function destroy(Category $category){
+
+        $category->delete();
+
+        return redirect()->back()->with('success', 'category removed successfully');
     }
 }

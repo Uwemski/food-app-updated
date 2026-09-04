@@ -47,12 +47,12 @@ class MenuController extends Controller
         }else{    
         // Grouped browse view (no filters active)
             $groupedProducts = Category::with(['product' => function($q) use ($request) {
-                            if ($request->sort === 'price_asc') {
-                                $q->orderBy('price');
-                            }
-                        }])
-                        ->whereHas('product')
-                        ->get();
+                                    if ($request->sort === 'price_asc') {
+                                        $q->orderBy('price');
+                                    }
+                                }])
+                                ->whereHas('product')
+                                ->get();
         }
                
         return view('menu', compact('categories', 'totalProducts', 'groupedProducts', 'products', 'cart', 'count'));
