@@ -57,7 +57,7 @@
                     </form>
                 </td>
                 <td>
-                    <form  action="{{route('product.remove', $product->id)}}" method="post">
+                    <form  action="{{route('product.destroy', $product->id)}}" method="post">
                         @csrf
                         <button>Delete</button>
                     </form>

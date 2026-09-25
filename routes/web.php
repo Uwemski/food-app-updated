@@ -47,13 +47,13 @@ Route::post('/admin/create-category', [CategoryController::class, 'store'])->nam
 Route::get('/admin/view-category', [CategoryController::class, 'show'])->name('category.show');//without middleware
 Route::delete('/admin/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
-Route::get('/admin/create-product', [ProductController::class, 'index'])->name('product.create');
+Route::get('/admin/create', [ProductController::class, 'create'])->name('product.create');
 Route::post('/admin/create-product', [ProductController::class, 'store'])->name('product.store');
-Route::get('/admin/products', [ProductController::class, 'show'])->name('products.show');
+Route::get('/admin/products', [ProductController::class, 'show'])->name('products.index');
 Route::patch('/admin/{product}/availability', [ProductController::class, 'updateAvailability'])->name('product.updateAvailability');
 Route::patch('/admin/{product}/quantity', [ProductController::class, 'updateQuantity'])->name('product.updateQuantity');
-Route::post('/admin/{product}/remove', [ProductController::class, 'remove'])->name('product.remove');
-Route::post('/admin/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::delete('/admin/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
+Route::get('/admin/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
 
 Route::DELETE('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 Route::get('/cart/view', [CartController::class, 'index'])->name('cart.index');

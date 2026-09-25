@@ -5,7 +5,7 @@
                 Dashboard
             </a>
 
-            <a href="{{route('products.show')}}"
+            <a href="{{route('products.index')}}"
                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-white/70 hover:bg-white/5 hover:text-white transition-all duration-200">
                 <span class="text-lg">🍔</span>
                 Products

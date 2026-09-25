@@ -13,8 +13,8 @@
                 @csrf
                 <div>
                     <select name="category_id" id="" required>
-                        @foreach($category as $cat)
-                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
                 </div>

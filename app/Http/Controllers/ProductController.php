@@ -12,16 +12,17 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 class ProductController extends Controller
 {
     //
-    public function index()
+    public function create()
     {
-        $category = Category::all();
-        return view('admin.create_product', compact('category'));
+        //show create form
+        $categories = Category::all();
+        return view('admin.create_product', compact('categories'));
     }
 
     public function guestIndex(){
-        $product = Product::with('category')->latest()->paginate(15);
+        $products = Product::with('category')->latest()->paginate(15);
 
-        return view('product.index' ,compact('product'));
+        return view('product.index' ,compact('products'));
     }
 
     public function store(CreateProductRequest $request)
@@ -70,8 +71,8 @@ class ProductController extends Controller
         }
     }
 
-    public function show(){
-        $products = Product::all();
+    public function index(){
+        $products = Product::with('category')->get();
     
         return view('admin.products', compact('products'));
     }
@@ -101,7 +102,7 @@ class ProductController extends Controller
     }
 
     //a method to remove product
-    public function remove(Product $product)
+    public function destroy(Product $product)
     {
         $product->delete();
 
