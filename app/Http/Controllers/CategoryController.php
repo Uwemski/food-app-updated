@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     //
-    public function index()
+    public function create()
     {
         return view('admin.create_category');
     }
@@ -17,7 +17,6 @@ class CategoryController extends Controller
     //method to store new category
     public function store(Request $request)
     {
-        // dd('holiness must ve my lifestyle');
         //request validation
             $data = $request->validate([
                 'name' => 'required|min:3'
@@ -61,10 +60,10 @@ class CategoryController extends Controller
     }
 
     //method to view all
-    public function show()
+    public function index()
     {
         $categories = Category::with('products')
-            ->paginate(10);//very bad,practice using eager loading
+            ->paginate(10);
 
         // dd($category);
         return view('admin.category', compact('categories'));

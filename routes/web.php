@@ -42,14 +42,14 @@ Route::middleware('auth')->group(function () {
 
 // admin middleware
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-Route::get('/admin/create-category', [CategoryController::class, 'index'])->name('category.create');
+Route::get('/admin/create', [CategoryController::class, 'create'])->name('category.create');
 Route::post('/admin/create-category', [CategoryController::class, 'store'])->name('category.store');
-Route::get('/admin/view-category', [CategoryController::class, 'show'])->name('category.show');//without middleware
+Route::get('/admin/category', [CategoryController::class, 'index'])->name('category.index');//without middleware
 Route::delete('/admin/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 Route::get('/admin/create', [ProductController::class, 'create'])->name('product.create');
 Route::post('/admin/create-product', [ProductController::class, 'store'])->name('product.store');
-Route::get('/admin/products', [ProductController::class, 'show'])->name('products.index');
+Route::get('/admin/products', [ProductController::class, 'index'])->name('products.index');
 Route::patch('/admin/{product}/availability', [ProductController::class, 'updateAvailability'])->name('product.updateAvailability');
 Route::patch('/admin/{product}/quantity', [ProductController::class, 'updateQuantity'])->name('product.updateQuantity');
 Route::delete('/admin/{product}', [ProductController::class, 'destroy'])->name('product.destroy');

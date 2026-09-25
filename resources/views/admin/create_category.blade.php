@@ -1,6 +1,6 @@
 <x-admin-layout>
 
-<div style='text-transform:uppercase; font-weight:bold'>
+    <div style='text-transform:uppercase; font-weight:bold'>
         Create Category
     </div>
 
