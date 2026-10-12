@@ -25,7 +25,7 @@ class CategoryController extends Controller
             $data['name'] = strip_tags($data['name']);
             $slug = Str::slug($data['name']);
 
-            $count = Category::where('slug', 'like', "%$slug%")
+            $count = Category::where('slug', 'like', "%{$slug}%")
                         ->count();
 
             if($count > 0){
