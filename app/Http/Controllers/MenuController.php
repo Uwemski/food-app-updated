@@ -54,7 +54,7 @@ class MenuController extends Controller
                                 ->whereHas('product')
                                 ->get();
         }
-               
+        
         return view('menu', compact('categories', 'totalProducts', 'groupedProducts', 'products', 'cart', 'count'));
     }
 }
