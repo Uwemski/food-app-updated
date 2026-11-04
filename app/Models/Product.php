@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use App\Traits\Searchable;
+
 
 class Product extends Model
 {
     //
+    use searchable;
 
     protected $fillable = [
         'category_id',
